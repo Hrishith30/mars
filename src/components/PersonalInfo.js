@@ -4,10 +4,12 @@ import * as Yup from 'yup';
 import { countries } from 'countries-list';
 
 const PersonalInfo = ({ formData, handleFormData, nextStage }) => {
-  // Convert countries object to sorted array of country names
-  const countryNames = Object.values(countries)
-    .map(country => country.name)
-    .sort();
+  // Convert countries object to array with name and phone code
+  const countryData = Object.entries(countries).map(([code, country]) => ({
+    name: country.name,
+    phone: country.phone,
+    code: code  // Add the country code for reference
+  })).sort((a, b) => a.name.localeCompare(b.name));
 
   const validationSchema = Yup.object({
     fullName: Yup.string()
@@ -40,6 +42,20 @@ const PersonalInfo = ({ formData, handleFormData, nextStage }) => {
       nextStage();
     },
   });
+
+  // Add handler for nationality change
+  const handleNationalityChange = (e) => {
+    const selectedCountry = countryData.find(country => country.name === e.target.value);
+    formik.setFieldValue('nationality', e.target.value);
+    
+    // Update phone number with country code if phone is empty or only contains a different country code
+    if (selectedCountry) {
+      const newPhoneValue = `+${selectedCountry.phone}`;
+      if (!formik.values.phone || /^\+\d+/.test(formik.values.phone)) {
+        formik.setFieldValue('phone', newPhoneValue);
+      }
+    }
+  };
 
   return (
     <form onSubmit={formik.handleSubmit} className="form-stage">
@@ -81,16 +97,16 @@ const PersonalInfo = ({ formData, handleFormData, nextStage }) => {
         <select
           id="nationality"
           name="nationality"
-          onChange={formik.handleChange}
+          onChange={handleNationalityChange}
           onBlur={formik.handleBlur}
           value={formik.values.nationality}
           className={formik.touched.nationality && formik.errors.nationality ? 'error' : ''}
           style={{ width: '100%' }}
         >
           <option value="">Select a country</option>
-          {countryNames.map((country) => (
-            <option key={country} value={country}>
-              {country}
+          {countryData.map((country) => (
+            <option key={country.name} value={country.name}>
+              {country.name}
             </option>
           ))}
         </select>
@@ -117,15 +133,31 @@ const PersonalInfo = ({ formData, handleFormData, nextStage }) => {
 
       <div className="form-group">
         <label htmlFor="phone">Phone Number</label>
-        <input
-          id="phone"
-          name="phone"
-          type="tel"
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.phone}
-          className={formik.touched.phone && formik.errors.phone ? 'error' : ''}
-        />
+        <div style={{ display: 'flex', gap: '8px' }}>
+          <input
+            disabled
+            value={formik.values.nationality ? 
+              `+${countryData.find(country => country.name === formik.values.nationality)?.phone || ''}` : 
+              ''}
+            style={{ width: '80px', backgroundColor: '#f5f5f5' }}
+          />
+          <input
+            id="phone"
+            name="phone"
+            type="tel"
+            onChange={(e) => {
+              const value = e.target.value;
+              // Remove any existing country code if present
+              const phoneNumber = value.replace(/^\+\d+\s*/, '');
+              formik.setFieldValue('phone', phoneNumber);
+            }}
+            onBlur={formik.handleBlur}
+            value={formik.values.phone?.replace(/^\+\d+\s*/, '') || ''}
+            className={formik.touched.phone && formik.errors.phone ? 'error' : ''}
+            placeholder="Enter phone number"
+            style={{ flex: 1 }}
+          />
+        </div>
         {formik.touched.phone && formik.errors.phone && (
           <div className="error-message">{formik.errors.phone}</div>
         )}
