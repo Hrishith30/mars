@@ -71,7 +71,7 @@ const Success = ({ formData }) => {
         </div>
         <div className="download-section">
           <button 
-            className="download-button"
+            className="download-button primary-button"
             onClick={generatePDF}
           >
             Download Application Summary (PDF)
