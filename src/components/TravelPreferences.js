@@ -5,16 +5,16 @@ import * as Yup from 'yup';
 const TravelPreferences = ({ formData, handleFormData, nextStage, previousStage }) => {
   const validationSchema = Yup.object({
     departureDate: Yup.date()
-      .required('Departure date is required')
-      .min(new Date(), 'Departure date must be in the future'),
+      .required('*Departure date is required')
+      .min(new Date(), '*Departure date must be in the future'),
     returnDate: Yup.date()
-      .required('Return date is required')
+      .required('*Return date is required')
       .min(Yup.ref('departureDate'), 'Return date must be after departure date'),
     accommodation: Yup.string()
-      .required('Accommodation preference is required')
-      .oneOf(['spaceHotel', 'martianBase'], 'Please select a valid accommodation'),
+      .required('*Accommodation preference is required')
+      .oneOf(['spaceHotel', 'martianBase'], '*Please select a valid accommodation'),
     specialRequests: Yup.string()
-      .max(500, 'Special requests must be less than 500 characters')
+      .max(500, '*Special requests must be less than 500 characters')
   });
 
   const formik = useFormik({

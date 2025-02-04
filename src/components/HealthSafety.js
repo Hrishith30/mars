@@ -5,22 +5,22 @@ import * as Yup from 'yup';
 const HealthSafety = ({ formData, handleFormData, nextStage, previousStage }) => {
   const validationSchema = Yup.object({
     healthDeclaration: Yup.boolean()
-      .oneOf([true], 'You must agree to the health declaration'),
+      .oneOf([true], '*You must agree to the health declaration'),
     emergencyContact: Yup.object().shape({
       name: Yup.string()
-        .required('Emergency contact name is required'),
+        .required('*Emergency contact name is required'),
       relationship: Yup.string()
-        .required('Relationship is required'),
+        .required('*Relationship is required'),
       phone: Yup.string()
         .matches(/^[0-9+\-() ]+$/, 'Invalid phone number')
-        .required('Emergency contact phone is required'),
+        .required('*Emergency contact phone is required'),
     }),
     medicalConditions: Yup.string()
-      .max(1000, 'Medical conditions description must be less than 1000 characters'),
+      .max(1000, '*Medical conditions description must be less than 1000 characters'),
     medications: Yup.string()
-      .max(500, 'Medications list must be less than 500 characters'),
+      .max(500, '*Medications list must be less than 500 characters'),
     allergies: Yup.string()
-      .max(500, 'Allergies list must be less than 500 characters'),
+      .max(500, '*Allergies list must be less than 500 characters'),
   });
 
   const formik = useFormik({

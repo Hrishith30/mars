@@ -13,19 +13,19 @@ const PersonalInfo = ({ formData, handleFormData, nextStage }) => {
 
   const validationSchema = Yup.object({
     fullName: Yup.string()
-      .required('Full name is required')
-      .min(2, 'Name must be at least 2 characters'),
+      .required('*Full name is required')
+      .min(2, '*Name must be at least 2 characters'),
     dateOfBirth: Yup.date()
-      .required('Date of birth is required')
-      .max(new Date(), 'Date cannot be in the future'),
+      .required('*Date of birth is required')
+      .max(new Date(), '*Date cannot be in the future'),
     nationality: Yup.string()
-      .required('Nationality is required'),
+      .required('*Nationality is required'),
     email: Yup.string()
-      .email('Invalid email format')
-      .required('Email is required'),
+      .email('*Invalid email format')
+      .required('*Email is required'),
     phone: Yup.string()
-      .matches(/^[0-9+\-() ]+$/, 'Invalid phone number')
-      .required('Phone number is required'),
+      .matches(/^[0-9+\-() ]+$/, '*Invalid phone number')
+      .required('*Phone number is required'),
   });
 
   const formik = useFormik({
