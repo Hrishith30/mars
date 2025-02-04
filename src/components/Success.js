@@ -45,7 +45,7 @@ const Success = ({ formData, onStartNew }) => {
             <path d="M22 4L12 14.01l-3-3" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </div>
-        <h2>Application Submitted Successfully!</h2>
+        <center><h2>Application Submitted Successfully!</h2></center>
         <p>Thank you for your interest in visiting Mars, {formData.fullName}!</p>
         <div className="confirmation-details">
           <p>Your application has been received and is being processed. Here's a summary of your trip details:</p>

@@ -33,7 +33,7 @@ const TravelPreferences = ({ formData, handleFormData, nextStage, previousStage 
 
   return (
     <form onSubmit={formik.handleSubmit} className="form-stage">
-      <h2>Travel Preferences</h2>
+      <center><h2>Travel Preferences</h2></center>
       
       <div className="form-group">
         <label htmlFor="departureDate">Departure Date</label>

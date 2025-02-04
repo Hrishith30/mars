@@ -44,7 +44,7 @@ const HealthSafety = ({ formData, handleFormData, nextStage, previousStage }) =>
 
   return (
     <form onSubmit={formik.handleSubmit} className="form-stage">
-      <h2>Health and Safety Information</h2>
+      <center><h2>Health and Safety Information</h2></center>
 
       <div className="form-group checkbox-group">
         <div className="custom-checkbox">

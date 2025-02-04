@@ -59,7 +59,7 @@ const PersonalInfo = ({ formData, handleFormData, nextStage }) => {
 
   return (
     <form onSubmit={formik.handleSubmit} className="form-stage">
-      <h2>Personal Information</h2>
+      <center><h2>Personal Information</h2></center>
       <div className="form-group">
         <label htmlFor="fullName">Full Name</label>
         <input
