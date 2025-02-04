@@ -49,7 +49,7 @@ const HealthSafety = ({ formData, handleFormData, nextStage, previousStage }) =>
       <div className="form-section">
         <h3>Emergency Contact</h3>
         <div className="form-group">
-          <label htmlFor="emergencyContact.name">Contact Name</label>
+          <label htmlFor="emergencyContact.name">Contact Name *</label>
           <input
             id="emergencyContact.name"
             name="emergencyContact.name"
@@ -68,7 +68,7 @@ const HealthSafety = ({ formData, handleFormData, nextStage, previousStage }) =>
         </div>
 
         <div className="form-group">
-          <label htmlFor="emergencyContact.relationship">Relationship</label>
+          <label htmlFor="emergencyContact.relationship">Relationship *</label>
           <input
             id="emergencyContact.relationship"
             name="emergencyContact.relationship"
@@ -87,7 +87,7 @@ const HealthSafety = ({ formData, handleFormData, nextStage, previousStage }) =>
         </div>
 
         <div className="form-group">
-          <label htmlFor="emergencyContact.phone">Contact Phone</label>
+          <label htmlFor="emergencyContact.phone">Contact Phone *</label>
           <input
             id="emergencyContact.phone"
             name="emergencyContact.phone"
@@ -167,7 +167,7 @@ const HealthSafety = ({ formData, handleFormData, nextStage, previousStage }) =>
             onChange={formik.handleChange}
           />
           <label htmlFor="healthDeclaration">
-            I declare that I am in good health and fit for space travel
+            I declare that I am in good health and fit for space travel *
           </label>
         </div>
         {formik.touched.healthDeclaration && formik.errors.healthDeclaration && (

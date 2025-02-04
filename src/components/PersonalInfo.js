@@ -61,7 +61,7 @@ const PersonalInfo = ({ formData, handleFormData, nextStage }) => {
     <form onSubmit={formik.handleSubmit} className="form-stage">
       <center><h2>Personal Information</h2></center>
       <div className="form-group">
-        <label htmlFor="fullName">Full Name</label>
+        <label htmlFor="fullName">Full Name *</label>
         <input
           id="fullName"
           name="fullName"
@@ -77,7 +77,7 @@ const PersonalInfo = ({ formData, handleFormData, nextStage }) => {
       </div>
 
       <div className="form-group">
-        <label htmlFor="dateOfBirth">Date of Birth</label>
+        <label htmlFor="dateOfBirth">Date of Birth *</label>
         <input
           id="dateOfBirth"
           name="dateOfBirth"
@@ -93,7 +93,7 @@ const PersonalInfo = ({ formData, handleFormData, nextStage }) => {
       </div>
 
       <div className="form-group">
-        <label htmlFor="nationality">Nationality</label>
+        <label htmlFor="nationality">Nationality *</label>
         <select
           id="nationality"
           name="nationality"
@@ -116,7 +116,7 @@ const PersonalInfo = ({ formData, handleFormData, nextStage }) => {
       </div>
 
       <div className="form-group">
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email">Email *</label>
         <input
           id="email"
           name="email"
@@ -132,7 +132,7 @@ const PersonalInfo = ({ formData, handleFormData, nextStage }) => {
       </div>
 
       <div className="form-group">
-        <label htmlFor="phone">Phone Number</label>
+        <label htmlFor="phone">Phone Number *</label>
         <div style={{ display: 'flex', gap: '8px' }}>
           <input
             disabled

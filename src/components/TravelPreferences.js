@@ -36,7 +36,7 @@ const TravelPreferences = ({ formData, handleFormData, nextStage, previousStage 
       <center><h2>Travel Preferences</h2></center>
       
       <div className="form-group">
-        <label htmlFor="departureDate">Departure Date</label>
+        <label htmlFor="departureDate">Departure Date *</label>
         <input
           id="departureDate"
           name="departureDate"
@@ -52,7 +52,7 @@ const TravelPreferences = ({ formData, handleFormData, nextStage, previousStage 
       </div>
 
       <div className="form-group">
-        <label htmlFor="returnDate">Return Date</label>
+        <label htmlFor="returnDate">Return Date *</label>
         <input
           id="returnDate"
           name="returnDate"
@@ -68,7 +68,7 @@ const TravelPreferences = ({ formData, handleFormData, nextStage, previousStage 
       </div>
 
       <div className="form-group">
-        <label htmlFor="accommodation">Accommodation Preference</label>
+        <label htmlFor="accommodation">Accommodation Preference *</label>
         <select
           id="accommodation"
           name="accommodation"
