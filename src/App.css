@@ -128,6 +128,32 @@ h3 {
   border-color: var(--accent-color);
   color: white;
   transform: scale(1.1);
+  position: relative;
+  box-shadow: 0 0 10px var(--accent-color),
+              0 0 20px var(--accent-color),
+              0 0 30px var(--accent-color);
+}
+
+/* Remove the ripple effects */
+.progress-step.active::before,
+.progress-step.active::after {
+  display: none;
+}
+
+/* Remove the ripple animation since we're not using it anymore */
+@keyframes ripple {
+  0% {
+    width: 35px;
+    height: 35px;
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    width: 70px;
+    height: 70px;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1);
+  }
 }
 
 .progress-step.completed {
@@ -208,7 +234,7 @@ textarea:focus {
 .button-group {
   display: flex;
   justify-content: space-between;
-  margin-top: 0.75rem;
+  margin-top: 2rem;
   gap: 0.5rem;
 }
 
@@ -220,6 +246,7 @@ button {
   font-weight: 500;
   cursor: pointer;
   transition: var(--transition);
+  min-width: 120px;
 }
 
 .next-button {
