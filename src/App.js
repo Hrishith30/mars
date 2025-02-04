@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import PersonalInfo from './components/PersonalInfo';
 import TravelPreferences from './components/TravelPreferences';
@@ -7,6 +7,8 @@ import Success from './components/Success';
 
 function App() {
   const [stage, setStage] = useState(1);
+  const [stars, setStars] = useState([]);
+  const [shootingStars, setShootingStars] = useState([]);
   const [formData, setFormData] = useState({
     // Personal Info
     fullName: '',
@@ -30,6 +32,38 @@ function App() {
     medications: '',
     allergies: ''
   });
+
+  useEffect(() => {
+    const generateStars = () => {
+      const numberOfStars = 200;
+      const numberOfShootingStars = 3;
+      const newStars = [];
+      const newShootingStars = [];
+      
+      for (let i = 0; i < numberOfStars; i++) {
+        newStars.push({
+          id: i,
+          left: `${Math.random() * 100}%`,
+          top: `${Math.random() * 100}vh`,
+          animationDelay: `${Math.random() * 3}s`
+        });
+      }
+
+      for (let i = 0; i < numberOfShootingStars; i++) {
+        newShootingStars.push({
+          id: i,
+          left: `-50px`,
+          top: `${Math.random() * 30}vh`,
+          animationDelay: `${i * 7}s`
+        });
+      }
+      
+      setStars(newStars);
+      setShootingStars(newShootingStars);
+    };
+
+    generateStars();
+  }, []);
 
   const nextStage = () => {
     setStage(stage + 1);
@@ -78,8 +112,34 @@ function App() {
 
   return (
     <div className="App">
+      <div className="starry-background">
+        {stars.map((star) => (
+          <div
+            key={star.id}
+            className="star"
+            style={{
+              left: star.left,
+              top: star.top,
+              animationDelay: star.animationDelay
+            }}
+          />
+        ))}
+        {shootingStars.map((star) => (
+          <div
+            key={`shooting-${star.id}`}
+            className="shooting-star"
+            style={{
+              left: star.left,
+              top: star.top,
+              animationDelay: star.animationDelay
+            }}
+          />
+        ))}
+      </div>
+      <div className="mars-planet" />
+      <h1>Mars Visit Application</h1>
+      <h4 className="form-subtitle">Your journey to Mars begins here</h4>
       <div className="form-container">
-        <h1>Mars Visit Application</h1>
         <div className="progress-bar">
           <div className={`progress-step ${stage >= 1 ? 'active' : ''}`}>1</div>
           <div className={`progress-step ${stage >= 2 ? 'active' : ''}`}>2</div>

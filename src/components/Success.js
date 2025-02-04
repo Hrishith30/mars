@@ -81,7 +81,7 @@ const Success = ({ formData }) => {
           </button>
         </div>
         <button 
-          className="new-application-button"
+          className="new-application-button center-button"
           onClick={() => window.location.href = '/'}
         >
           Start Another Application

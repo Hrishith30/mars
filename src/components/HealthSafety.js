@@ -47,15 +47,18 @@ const HealthSafety = ({ formData, handleFormData, nextStage, previousStage }) =>
       <h2>Health and Safety Information</h2>
 
       <div className="form-group checkbox-group">
-        <label className="checkbox-label">
+        <div className="custom-checkbox">
           <input
             type="checkbox"
+            id="healthDeclaration"
             name="healthDeclaration"
             checked={formik.values.healthDeclaration}
             onChange={formik.handleChange}
           />
-          I declare that I am in good health and fit for space travel
-        </label>
+          <label htmlFor="healthDeclaration">
+            I declare that I am in good health and fit for space travel
+          </label>
+        </div>
         {formik.touched.healthDeclaration && formik.errors.healthDeclaration && (
           <div className="error-message">{formik.errors.healthDeclaration}</div>
         )}
