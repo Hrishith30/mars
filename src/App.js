@@ -6,32 +6,49 @@ import HealthSafety from './components/HealthSafety';
 import Success from './components/Success';
 
 function App() {
-  const [stage, setStage] = useState(1);
+  const [stage, setStage] = useState(() => {
+    // Get saved stage from localStorage or default to 1
+    return parseInt(localStorage.getItem('marsVisitStage')) || 1;
+  });
   const [stars, setStars] = useState([]);
   const [shootingStars, setShootingStars] = useState([]);
-  const [formData, setFormData] = useState({
-    // Personal Info
-    fullName: '',
-    dateOfBirth: '',
-    nationality: '',
-    email: '',
-    phone: '',
-    // Travel Preferences
-    departureDate: '',
-    returnDate: '',
-    accommodation: '',
-    specialRequests: '',
-    // Health and Safety
-    healthDeclaration: false,
-    emergencyContact: {
-      name: '',
-      relationship: '',
-      phone: ''
-    },
-    medicalConditions: '',
-    medications: '',
-    allergies: ''
+  const [formData, setFormData] = useState(() => {
+    // Get saved form data from localStorage or use default empty values
+    const savedFormData = localStorage.getItem('marsVisitFormData');
+    return savedFormData ? JSON.parse(savedFormData) : {
+      // Personal Info
+      fullName: '',
+      dateOfBirth: '',
+      nationality: '',
+      email: '',
+      phone: '',
+      // Travel Preferences
+      departureDate: '',
+      returnDate: '',
+      accommodation: '',
+      specialRequests: '',
+      // Health and Safety
+      healthDeclaration: false,
+      emergencyContact: {
+        name: '',
+        relationship: '',
+        phone: ''
+      },
+      medicalConditions: '',
+      medications: '',
+      allergies: ''
+    };
   });
+
+  // Save stage to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('marsVisitStage', stage);
+  }, [stage]);
+
+  // Save form data to localStorage whenever it changes
+  useEffect(() => {
+    localStorage.setItem('marsVisitFormData', JSON.stringify(formData));
+  }, [formData]);
 
   useEffect(() => {
     const generateStars = () => {
@@ -100,7 +117,35 @@ function App() {
           nextStage={nextStage} 
         />;
       case 4:
-        return <Success formData={formData} />;
+        return <Success 
+          formData={formData} 
+          onStartNew={() => {
+            // Clear localStorage and reset state when starting new application
+            localStorage.removeItem('marsVisitStage');
+            localStorage.removeItem('marsVisitFormData');
+            setStage(1);
+            setFormData({
+              fullName: '',
+              dateOfBirth: '',
+              nationality: '',
+              email: '',
+              phone: '',
+              departureDate: '',
+              returnDate: '',
+              accommodation: '',
+              specialRequests: '',
+              healthDeclaration: false,
+              emergencyContact: {
+                name: '',
+                relationship: '',
+                phone: ''
+              },
+              medicalConditions: '',
+              medications: '',
+              allergies: ''
+            });
+          }}
+        />;
       default:
         return <PersonalInfo 
           formData={formData} 

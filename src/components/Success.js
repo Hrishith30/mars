@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 
-const Success = ({ formData }) => {
+const Success = ({ formData, onStartNew }) => {
   const contentRef = useRef(null);
 
   const generatePDF = () => {
@@ -82,7 +82,7 @@ const Success = ({ formData }) => {
         </div>
         <button 
           className="new-application-button center-button"
-          onClick={() => window.location.href = '/'}
+          onClick={onStartNew}
         >
           Start Another Application
         </button>
