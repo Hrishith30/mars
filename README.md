@@ -1,4 +1,4 @@
-#This site is visually enhanced for both mobiles and desktops.
+##This site is visually enhanced for both mobiles and desktops.
 
 # Getting Started with Create React App
 
