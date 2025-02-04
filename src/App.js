@@ -181,10 +181,10 @@ function App() {
           />
         ))}
       </div>
-      <div className="mars-planet" />
-      <h1>Mars Visit Application</h1>
-      <h4 className="form-subtitle">Your journey to Mars begins here</h4>
-      <div className="form-container">
+      <div className="mars-planet" style={{ zIndex: 0 }} />
+      <h1 style={{ position: 'relative', zIndex: 1 }}>Mars Visit Application</h1>
+      <h4 className="form-subtitle" style={{ position: 'relative', zIndex: 1 }}>Your journey to Mars begins here</h4>
+      <div className="form-container" style={{ position: 'relative', zIndex: 1 }}>
         <div className="progress-bar">
           <div className={`progress-step ${stage >= 1 ? 'active' : ''}`}>1</div>
           <div className={`progress-step ${stage >= 2 ? 'active' : ''}`}>2</div>

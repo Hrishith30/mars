@@ -641,7 +641,7 @@ input[type="date"]:invalid::-webkit-datetime-edit {
     0 0 125px rgba(193, 68, 14, 0.4),  /* Extended glow */
     0 0 150px rgba(193, 68, 14, 0.3); /* Maximum glow */
   animation: rotate 20s linear infinite;
-  z-index: 1000;
+  z-index: 0;
   overflow: hidden;
 }
 
@@ -802,4 +802,18 @@ input[type="date"]:invalid::-webkit-datetime-edit {
 .custom-checkbox label {
   cursor: pointer;
   line-height: 1.4;
+}
+
+.App h1,
+.form-subtitle,
+.form-container {
+  position: relative;
+  z-index: 1;
+}
+
+.success-heading {
+  color: white;
+  text-align: center;
+  margin: 1rem 0;
+  font-weight: bold;
 }
