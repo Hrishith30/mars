@@ -1,6 +1,6 @@
-##This site is visually enhanced for both mobiles and desktops.
-
 # Getting Started with Create React App
+
+##This site is visually enhanced for both mobiles and desktops.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
