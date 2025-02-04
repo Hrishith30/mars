@@ -46,24 +46,6 @@ const HealthSafety = ({ formData, handleFormData, nextStage, previousStage }) =>
     <form onSubmit={formik.handleSubmit} className="form-stage">
       <center><h2>Health and Safety Information</h2></center>
 
-      <div className="form-group checkbox-group">
-        <div className="custom-checkbox">
-          <input
-            type="checkbox"
-            id="healthDeclaration"
-            name="healthDeclaration"
-            checked={formik.values.healthDeclaration}
-            onChange={formik.handleChange}
-          />
-          <label htmlFor="healthDeclaration">
-            I declare that I am in good health and fit for space travel
-          </label>
-        </div>
-        {formik.touched.healthDeclaration && formik.errors.healthDeclaration && (
-          <div className="error-message">{formik.errors.healthDeclaration}</div>
-        )}
-      </div>
-
       <div className="form-section">
         <h3>Emergency Contact</h3>
         <div className="form-group">
@@ -172,6 +154,24 @@ const HealthSafety = ({ formData, handleFormData, nextStage, previousStage }) =>
         />
         {formik.touched.allergies && formik.errors.allergies && (
           <div className="error-message">{formik.errors.allergies}</div>
+        )}
+      </div>
+
+      <div className="form-group checkbox-group">
+        <div className="custom-checkbox">
+          <input
+            type="checkbox"
+            id="healthDeclaration"
+            name="healthDeclaration"
+            checked={formik.values.healthDeclaration}
+            onChange={formik.handleChange}
+          />
+          <label htmlFor="healthDeclaration">
+            I declare that I am in good health and fit for space travel
+          </label>
+        </div>
+        {formik.touched.healthDeclaration && formik.errors.healthDeclaration && (
+          <div className="error-message">{formik.errors.healthDeclaration}</div>
         )}
       </div>
 
