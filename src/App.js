@@ -21,8 +21,14 @@ function App() {
     specialRequests: '',
     // Health and Safety
     healthDeclaration: false,
-    emergencyContact: '',
-    medicalConditions: ''
+    emergencyContact: {
+      name: '',
+      relationship: '',
+      phone: ''
+    },
+    medicalConditions: '',
+    medications: '',
+    allergies: ''
   });
 
   const nextStage = () => {
