@@ -8,9 +8,11 @@ const Success = ({ formData }) => {
   const generatePDF = () => {
     const content = contentRef.current;
     const downloadSection = content.querySelector('.download-section');
+    const newAppButton = content.querySelector('.new-application-button');
     
-    // Hide download section before capturing
+    // Hide download section and new application button before capturing
     downloadSection.style.display = 'none';
+    newAppButton.style.display = 'none';
     
     html2canvas(content, {
       scale: 1.5,
@@ -18,8 +20,9 @@ const Success = ({ formData }) => {
       logging: false,
       scrollY: -window.scrollY
     }).then(canvas => {
-      // Show download section after capturing
+      // Show download section and new application button after capturing
       downloadSection.style.display = 'block';
+      newAppButton.style.display = 'block';
       
       const imgWidth = 190;
       const imgHeight = (canvas.height * imgWidth) / canvas.width;
@@ -77,6 +80,12 @@ const Success = ({ formData }) => {
             Download Application Summary (PDF)
           </button>
         </div>
+        <button 
+          className="new-application-button"
+          onClick={() => window.location.href = '/'}
+        >
+          Start Another Application
+        </button>
       </div>
     </div>
   );
